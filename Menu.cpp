@@ -1,22 +1,15 @@
 #include <iostream>
 #include <memory>
 
-#include "Include/GameObject.h"
-#include "Include/DrawMap.h"
-#include "Include/LevelManager.h"
 #include "Include/Menu.h"
-
-
-#include "SpaceConstants.h"
-
-using namespace SpaceConstants;
+#include "Include/LevelManager.h"
 
 Menu::Menu(std::shared_ptr<Context> &context)
 : m_context(context), m_isPlayButtonSelected(true), m_isPlayButtonPressed(false), m_isOptionsButtonSelected(false),
       m_isOptionsButtonPressed(false), m_isExitButtonSelected(false), m_isExitButtonPressed(false)
 {
-    float width = MAP_WIDTH1;
-    float height = MAP_HEIGHT1;
+    float width = 800;
+    float height = 600;
     if(!font.loadFromFile("./../Resources/Images/ARCADE.TTF"))
     {
 
@@ -161,7 +154,6 @@ void Menu::Draw()
 {
 
     m_context->m_window->clear();
-    draw.Draw_map(m_context->m_window);
     m_context->m_window->draw(swag);
 
     for (int i = 0; i < MAX_NUMBER_OF_ITEMS; i++)

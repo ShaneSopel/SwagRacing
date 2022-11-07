@@ -8,16 +8,12 @@
 
 
 LevelManager::LevelManager(std::shared_ptr<Context> &context)
-: m_context(context), m_AsteroidNum(5) //, p()
+: m_context(context)
 {
-    oneuptext.LoadFont();
-    HighScore.LoadFont();
-    Lives.LoadFont();
-    Levels.LoadFont();
-    AsteroidsRemain.LoadFont();
-    sound.LoadSound();
-    swaglogo.loadFromFile("./../Resources/Images/Asteroids.png");
-    swag.setTexture(swaglogo);
+   
+    //sound.LoadSound();
+    //swaglogo.loadFromFile("./../Resources/Images/Asteroids.png");
+    //swag.setTexture(swaglogo);
 }
 
 LevelManager::~LevelManager()
@@ -68,11 +64,12 @@ void LevelManager::Draw()
 
 void LevelManager::SplashScreen()
 {
-    m_context->m_window->clear();
-    m_context->m_window->draw(swag);
-    Levels.Draw(m_context->m_window);
-    m_context->m_window->display();
-    std::this_thread::sleep_for(std::chrono::seconds(3)); 
+   // m_context->m_window->clear();
+
+   // m_context->m_window->draw(swag);
+   // Levels.Draw(m_context->m_window);
+   // m_context->m_window->display();
+   // std::this_thread::sleep_for(std::chrono::seconds(3)); 
 } 
 
 void LevelManager::Pause()

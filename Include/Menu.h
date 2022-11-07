@@ -6,6 +6,7 @@
 #include <memory>
 #include <SFML/Graphics.hpp>
 
+#include "DrawMap.h"
 #include "Game.h"
 #include "State.h"
 
@@ -17,6 +18,11 @@ class Menu : public Engine::State
     std::shared_ptr<Context> m_context;
     sf::Sprite swag;
     sf::Texture swaglogo;
+
+    sf::Sprite swag1;
+    sf::Texture swaglogo1;
+
+    DrawMap draw;
 
     bool m_isPlayButtonSelected;
     bool m_isPlayButtonPressed;

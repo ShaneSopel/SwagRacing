@@ -22,23 +22,13 @@ class LevelManager : public Engine::State
 
     SoundManager sound;
 
-    TextManager oneuptext;
-    TextManager HighScore;
-    TextManager AsteroidsRemain;
-    TextManager Lives;
-    TextManager Levels;
-
     sf::Texture t1;
     sf::Texture t2;
     sf::Texture t3;
     sf::Texture t4;
 
     sf::RenderWindow play; 
-
-
-    int m_AsteroidNum;
-
-    
+ 
     std::shared_ptr<Context> m_context;
 
     public:

@@ -38,7 +38,7 @@ class Menu : public Engine::State
     void Draw() override;
     void Init() override;
     void ProcessInput() override;
-    void Update() override;
+    void Update(sf::Time deltaTime) override;
 
     void Pause() override;
     void Start() override;

@@ -9,6 +9,10 @@
 #include "AssetMan.h"
 #include "StateMan.h"
 
+enum AssetID
+{
+    RACECAR=0
+};
 
 struct Context
 {

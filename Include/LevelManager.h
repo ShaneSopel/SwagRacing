@@ -4,13 +4,12 @@
 #include <list>
 #include <SFML/Graphics.hpp>
 
-
+#include "DrawMap.h"
 #include "Game.h"
+#include "RaceCar.h"
 #include "SoundManager.h"
 #include "TextManager.h"
 #include "State.h"
-
-
 
 class LevelManager : public Engine::State
 {
@@ -22,12 +21,11 @@ class LevelManager : public Engine::State
 
     SoundManager sound;
 
-    sf::Texture t1;
-    sf::Texture t2;
-    sf::Texture t3;
-    sf::Texture t4;
+    RaceCar m_race;
+    DrawMap draw;
 
-    sf::RenderWindow play; 
+    sf::Vector2f m_CarDirection;
+    bool m_isPaused; 
  
     std::shared_ptr<Context> m_context;
 
@@ -41,7 +39,7 @@ class LevelManager : public Engine::State
     void Draw() override;
     void Init() override;
     void ProcessInput() override;
-    void Update() override;
+    void Update(sf::Time deltaTime) override;
 
     void Pause() override;
     void Start() override;

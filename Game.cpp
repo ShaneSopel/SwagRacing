@@ -37,18 +37,10 @@ void Game::Run()
 
             m_context->m_states->ProcessStateChange();
             m_context->m_states->getCurrent()->ProcessInput();
-            m_context->m_states->getCurrent()->Update();
+            m_context->m_states->getCurrent()->Update(FRAMES_PER_SECOND);
             m_context->m_states->getCurrent()->Draw();
     
        }
     }
 
 }
-
-void level1 ()
-{
-    
-
-}
-
-

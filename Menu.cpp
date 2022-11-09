@@ -68,31 +68,32 @@ void Menu::ProcessInput()
                 if (!m_isPlayButtonSelected)
                 {
                     m_isPlayButtonSelected = true;
-                    m_isOptionsButtonSelected = false;
+                   // m_isOptionsButtonSelected = false;
                     m_isExitButtonSelected = false;
                 }
-                else if (!m_isOptionsButtonSelected)
+               /* else if (!m_isOptionsButtonSelected)
                 {
                     m_isPlayButtonSelected = false;
                     m_isOptionsButtonSelected = true;
                     m_isExitButtonSelected = false;
-                }
+                }*/
 
                 break;
             }
             case sf::Keyboard::Down:
             {
 
-                if (!m_isOptionsButtonSelected)
+               // if (!m_isOptionsButtonSelected)
+               // {
+               //     m_isPlayButtonSelected = false;
+               //     m_isOptionsButtonSelected = true;
+               //     m_isExitButtonSelected = false;
+               // }
+                //else
+                if (!m_isExitButtonSelected)
                 {
                     m_isPlayButtonSelected = false;
-                    m_isOptionsButtonSelected = true;
-                    m_isExitButtonSelected = false;
-                }
-                else
-                {
-                    m_isPlayButtonSelected = false;
-                    m_isOptionsButtonSelected = false;
+                   // m_isOptionsButtonSelected = false;
                     m_isExitButtonSelected = true;
                 }
 
@@ -102,7 +103,7 @@ void Menu::ProcessInput()
             {
                 m_isPlayButtonPressed = false;
                 m_isExitButtonPressed = false;
-                m_isOptionsButtonPressed = false;
+                //m_isOptionsButtonPressed = false;
 
                 if (m_isPlayButtonSelected)
                 {
@@ -127,7 +128,7 @@ void Menu::ProcessInput()
     }
 }
 
-void Menu::Update()
+void Menu::Update(sf::Time deltaTime)
 {
     if (m_isPlayButtonSelected)
     {

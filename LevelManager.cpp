@@ -9,7 +9,12 @@
 LevelManager::LevelManager(std::shared_ptr<Context> &context)
 : m_context(context), m_isPaused(false), m_CarDirection({350, 350.f})
 {
-   
+     if(!backg.loadFromFile("./../Resources/Images/GameBackground.png"))
+    {
+        std::cout << "error";
+    }
+    backg.setSmooth(true);
+    back.setTexture(backg);
 }
 
 LevelManager::~LevelManager()
@@ -73,8 +78,9 @@ void LevelManager::Init()
 
 void LevelManager::Draw()
 {
+
     m_context->m_window->clear();
-    draw.Draw_map(m_context->m_window);
+    m_context->m_window->draw(back);
 
     m_context->m_window->draw(m_race);
     m_context->m_window->display();
@@ -86,6 +92,8 @@ void LevelManager::SplashScreen()
     m_context->m_window->clear();
    //m_context->m_window->draw(swag);
    //Levels.Draw(m_context->m_window);
+
+    m_context->m_window->draw(back);
     m_context->m_window->display();
     std::this_thread::sleep_for(std::chrono::seconds(3)); 
 } 

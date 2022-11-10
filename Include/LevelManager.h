@@ -25,6 +25,9 @@ class LevelManager : public Engine::State
     DrawMap draw;
 
     sf::Vector2f m_CarDirection;
+    float RaceCarX = 350; 
+    float RaceCarY = 350;
+    
     bool m_isPaused; 
  
     std::shared_ptr<Context> m_context;

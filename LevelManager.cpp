@@ -6,15 +6,10 @@
 #include "Include/LevelManager.h"
 #include "Include/PauseGame.h"
 
-
-
 LevelManager::LevelManager(std::shared_ptr<Context> &context)
-: m_context(context), m_isPaused(false), m_CarDirection({16.f, 0.f})
+: m_context(context), m_isPaused(false), m_CarDirection({350, 350.f})
 {
    
-    //sound.LoadSound();
-    //swaglogo.loadFromFile("./../Resources/Images/Asteroids.png");
-    //swag.setTexture(swaglogo);
 }
 
 LevelManager::~LevelManager()
@@ -24,10 +19,6 @@ LevelManager::~LevelManager()
 void LevelManager::ProcessInput()
 {
     sf::Event event;
-    double RaceCarX = 400; 
-    double RaceCarY = 427;
-    const int borderLeft=140;
-    const int borderRight=660;
     while (m_context->m_window->pollEvent(event))
     {
         if (event.type == sf::Event::Closed)
@@ -41,17 +32,20 @@ void LevelManager::ProcessInput()
             switch (event.key.code)
             {
             case sf::Keyboard::Up:
-                
-                newDirection = {0.f, RaceCarY-10};
+                RaceCarY -= 10.f;
+                newDirection = {RaceCarX, RaceCarY};
                 break;
             case sf::Keyboard::Down:
-                newDirection = {0.f, RaceCarY+10};
+                RaceCarY += 10.f;
+                newDirection = {RaceCarX, RaceCarY};
                 break;
             case sf::Keyboard::Left:
-                newDirection = {RaceCarX-10.f, 0.f};
+                RaceCarX -= 10.f;
+                newDirection = {RaceCarX, RaceCarY};
                 break;
             case sf::Keyboard::Right:
-                newDirection = {RaceCarX+10.f, 0.f};
+                RaceCarX += 10.f;
+                newDirection = {RaceCarX, RaceCarY};
                 break;
             case sf::Keyboard::Escape:
                 m_context->m_states->Add(std::make_unique<PauseGame>(m_context));
@@ -59,12 +53,7 @@ void LevelManager::ProcessInput()
             default:
                 break;
             }
-
-            //if (std::abs(m_CarDirection.x) != std::abs(newDirection.x) ||
-           //     std::abs(m_CarDirection.y) != std::abs(newDirection.y))
-           //{
                 m_CarDirection = newDirection;
-          //  }
         } 
 
     }

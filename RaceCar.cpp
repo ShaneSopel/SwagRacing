@@ -13,7 +13,7 @@ void RaceCar::Init(const sf::Texture &texture)
 {
     float x = 16.f;
     car.setTexture(texture);
-    car.setPosition({x, 16.f});
+    car.setPosition(375,400);
     //x+= 16.f;
 }
 

@@ -11,7 +11,9 @@
 
 enum AssetID
 {
-    RACECAR=0
+    RACECAR=0,
+    OPPONENT1,
+    OPPONENT2
 };
 
 struct Context

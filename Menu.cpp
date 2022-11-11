@@ -154,7 +154,6 @@ void Menu::Update(sf::Time deltaTime)
     }
 }
 
-
 void Menu::Draw()
 {
 

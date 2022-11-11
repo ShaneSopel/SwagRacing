@@ -66,13 +66,38 @@ void LevelManager::ProcessInput()
 
 void LevelManager::Update(sf::Time deltaTime)
 {
+    if (op1y>600)
+    {
+        op1y=0;
+        op1x = m_op1.getRandomNumber(borderLeft,borderRight);
+        score++;
+    } 
+    else
+    {
+        op1y=op1y+3.8;
+    }
+    if (op2y>600)
+    {
+        op2y=0;
+        op2x = m_op2.getRandomNumber(borderLeft,borderRight);
+        score++;
+    } 
+    else 
+    {
+        op2y=op2y+3.8;
+    }
     m_race.Move(m_CarDirection);
+    
 }
 
 void LevelManager::Init()
 {
     m_context->m_assets->AddTexture(RACECAR, "./../Resources/Images/Car_3.png");
-    m_race.Init(m_context->m_assets->GetTexture(RACECAR));  
+    m_context->m_assets->AddTexture(OPPONENT1, "./../Resources/Images/Car_2.png");
+    m_context->m_assets->AddTexture(OPPONENT2, "./../Resources/Images/Car_1.png");
+    m_race.Init(m_context->m_assets->GetTexture(RACECAR)); 
+    m_op1.Init(m_context->m_assets->GetTexture(OPPONENT1)); 
+    m_op2.Init(m_context->m_assets->GetTexture(OPPONENT2));  
 
     oneuptext.LoadFont();
     HighScore.LoadFont();
@@ -87,12 +112,19 @@ void LevelManager::Init()
     
     back1 = back;
     back2 = back;
+
+    op1x = m_op1.getRandomNumber(borderLeft,borderRight);
+    op2x = m_op2.getRandomNumber(borderLeft,borderRight);
+
 }
 
 void LevelManager::Draw()
 {
     ScoreHandler();
     textureHeight = backg.getSize().y;
+
+    m_op1.Move({op1x, op1y});
+    m_op2.Move({op2x, op2y});
 
     back1.setPosition(0,BackgroundY1);
     back2.setPosition(0,BackgroundY2);
@@ -110,6 +142,8 @@ void LevelManager::Draw()
     oneuptext.Draw(m_context->m_window);
     HighScore.Draw(m_context->m_window);
     Lives.Draw(m_context->m_window);
+    m_context->m_window->draw(m_op1);
+    m_context->m_window->draw(m_op2);
     m_context->m_window->draw(m_race);
     m_context->m_window->display();
 }
@@ -121,7 +155,7 @@ void LevelManager::ScoreHandler()
     std::ostringstream livesIn;
     p1Score << "1UP "
             << "\n"
-            << 0;//->GetScore();
+            << score;
     highscoreIn << "Highscore "
                 << "\n"
                 << "1000000";

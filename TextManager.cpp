@@ -3,7 +3,7 @@
 
 void TextManager::LoadFont() 
 {
-    font.loadFromFile("/home/shanes/c++/SwagAsteroids/Resources/Images/ARCADE.TTF");
+    font.loadFromFile("./../Resources/Images/ARCADE.TTF");
 }
 
 void TextManager::TypeText(std::string text, sf::Color fontColor, sf::Vector2f position)
